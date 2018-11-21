@@ -20,6 +20,7 @@ import com.victor.cursospring.domain.PagamentoComCartao;
 import com.victor.cursospring.domain.Pedido;
 import com.victor.cursospring.domain.Produto;
 import com.victor.cursospring.domain.enums.EstadoPagamento;
+import com.victor.cursospring.domain.enums.Perfil;
 import com.victor.cursospring.domain.enums.TipoCliente;
 import com.victor.cursospring.repositories.CategoriaRepository;
 import com.victor.cursospring.repositories.CidadeRepository;
@@ -117,13 +118,20 @@ public class DbService {
                 TipoCliente.PESSOAFISICA, pe.encode("123456"));
         cli1.getTelefones().addAll(Arrays.asList("12312312", "456354756"));
         
+        Cliente cli2 = new Cliente(null, "Administrador", "vdrulis@gmail.com", "79394791051", 
+                TipoCliente.PESSOAFISICA, pe.encode("123"));
+        cli2.getTelefones().addAll(Arrays.asList("6643344", "445678888"));
+        cli2.addPerfil(Perfil.ADMIN);
+        
         Endereco e1 = new Endereco(null, "Rua Z", "121", "Apto 23", c1, "Jardim", "08535131", cli1);
         Endereco e2 = new Endereco(null, "Avenida A", "444", "Cj 55", c2, "Bairro Dois", "1112223", cli1);
+        Endereco e3 = new Endereco(null, "Avenida Santos Dumont", "10254", "Oficina", c2, "Centro", "1112223", cli2);
         
         cli1.getEnderecos().addAll(Arrays.asList(e1, e2));
+        cli2.getEnderecos().addAll(Arrays.asList(e3));
         
-        clienteRepo.saveAll(Arrays.asList(cli1));
-        enderecoRepo.saveAll(Arrays.asList(e1, e2));
+        clienteRepo.saveAll(Arrays.asList(cli1, cli2));
+        enderecoRepo.saveAll(Arrays.asList(e1, e2, e3));
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         
