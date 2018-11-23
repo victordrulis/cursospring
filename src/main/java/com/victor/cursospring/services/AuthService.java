@@ -4,11 +4,13 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import com.victor.cursospring.domain.Cliente;
 import com.victor.cursospring.repositories.ClienteRepository;
 import com.victor.cursospring.services.exceptions.ObjectNotFoundException;
 
+@Service
 public class AuthService {
     
     @Autowired
