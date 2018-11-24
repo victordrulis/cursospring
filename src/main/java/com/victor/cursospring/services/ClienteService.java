@@ -1,5 +1,6 @@
 package com.victor.cursospring.services;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,6 +13,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.victor.cursospring.domain.Cidade;
 import com.victor.cursospring.domain.Cliente;
@@ -38,6 +40,9 @@ public class ClienteService {
     
     @Autowired
     private EnderecoRepository enderecoRepo;
+    
+    @Autowired
+    private S3Service s3Service;
     
     public Cliente find(Integer id) {
         
@@ -110,6 +115,10 @@ public class ClienteService {
     private void updateData(Cliente newObj, Cliente obj) {
         newObj.setNome(obj.getNome());
         newObj.setEmail(obj.getEmail());
+    }
+    
+    public URI uploadProfilePicture(MultipartFile multiPartFile) {
+        return s3Service.uploadFile(multiPartFile);
     }
     
 }
