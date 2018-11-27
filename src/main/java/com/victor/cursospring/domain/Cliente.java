@@ -51,6 +51,8 @@ public class Cliente implements Serializable{
     @OneToMany(mappedBy="cliente")
     private List<Pedido> pedidos = new ArrayList<>();
     
+    private String imageUrl;
+    
     public Cliente () {
         addPerfil(Perfil.CLIENTE);
     }
@@ -201,6 +203,20 @@ public class Cliente implements Serializable{
      */
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+
+    /**
+     * @return the imageUrl
+     */
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    /**
+     * @param imageUrl the imageUrl to set
+     */
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     /* (non-Javadoc)
