@@ -5,14 +5,32 @@ import java.io.Serializable;
 public class StandardError implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    private Integer status;
-    private String msg;
     private Long timeStamp;
+    private Integer status;
+    private String error;
+    private String message;
+    private String path;
     
-    public StandardError(Integer status, String msg, Long timeStamp) {
+    public StandardError(Long timeStamp, Integer status, String error, String message, String path) {
         super();
+        this.timeStamp = timeStamp;
         this.status = status;
-        this.msg = msg;
+        this.error = error;
+        this.message = message;
+        this.path = path;
+    }
+
+    /**
+     * @return the timeStamp
+     */
+    public Long getTimeStamp() {
+        return timeStamp;
+    }
+
+    /**
+     * @param timeStamp the timeStamp to set
+     */
+    public void setTimeStamp(Long timeStamp) {
         this.timeStamp = timeStamp;
     }
 
@@ -31,31 +49,46 @@ public class StandardError implements Serializable {
     }
 
     /**
-     * @return the msg
+     * @return the error
      */
-    public String getMsg() {
-        return msg;
+    public String getError() {
+        return error;
     }
 
     /**
-     * @param msg the msg to set
+     * @param error the error to set
      */
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setError(String error) {
+        this.error = error;
     }
 
     /**
-     * @return the timeStamp
+     * @return the message
      */
-    public Long getTimeStamp() {
-        return timeStamp;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * @param timeStamp the timeStamp to set
+     * @param message the message to set
      */
-    public void setTimeStamp(Long timeStamp) {
-        this.timeStamp = timeStamp;
+    public void setMessage(String message) {
+        this.message = message;
     }
+
+    /**
+     * @return the path
+     */
+    public String getPath() {
+        return path;
+    }
+
+    /**
+     * @param path the path to set
+     */
+    public void setPath(String path) {
+        this.path = path;
+    }
+    
     
 }
