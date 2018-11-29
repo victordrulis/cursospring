@@ -26,11 +26,13 @@
                 <th>Produto</th>
                 <th>Quantidade</th>
                 <th>Preço unitário</th>
+                <th>Subtotal</th>
             </tr>
             <tr th:each="item : ${pedido.itens}">
                 <td th:text="${item.produto.nome}">nome</td>
                 <td th:text="${item.quantidade}">quantidade</td>
                 <td th:text="${#numbers.formatDecimal(item.preco, 0, 'POINT', 2, 'COMMA')}">preco</td>
+                <td th:text="${#numbers.formatDecimal(item.subtotal, 0, 'POINT', 2,'COMMA')}">subtotal</td>
             </tr>
         </table>
         <p>
